@@ -16,8 +16,7 @@ done
 
 # install packages
 which git &> /dev/null
-if [[ $? != 0 ]]
-then 
+if [[ $? != 0 ]]; then 
 	yellow "you havn't install git
 	please install git before execute this script"
 	#exit #needn't exit 'cause will install later 
@@ -25,31 +24,26 @@ fi
 
 # detect environment and install packages
 cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
-if [[ $? == 0 ]]
-then
-	sudo apt-get install zsh tmux vim ctags git g++ tree
+if [[ $? == 0 ]]; then
+	sudo apt-get install zsh tmux vim ctags git g++ tree python
 fi
 
 cat /etc/issue | grep -E "Fedora|CentOS" &> /dev/null
-if [[ $? == 0 ]]
-then
-	sudo yum install zsh tmux vim ctags git g++ tree
+if [[ $? == 0 ]]; then
+	sudo yum install zsh tmux vim ctags git g++ tree python
 fi
 
 # backup original configs and set new conf files
-if [[ -f ~/.vimrc || -h ~/.vimrc ]];
-then
+if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
 	mv ~/.vimrc ~/.vimrc.orig
 	red "original .vimrc backed up!"
 fi
 
-if (cp $TEMPLATE/vimrc ~/.vimrc);
-then
+if (cp $TEMPLATE/vimrc ~/.vimrc); then
 	red "vim updated to my customed config!"
 fi
 
-if [[ -f ~/.tmux.conf || -h ~/.tmux.conf ]];
-then
+if [[ -f ~/.tmux.conf || -h ~/.tmux.conf ]]; then
 	mv ~/.tmux.conf ~/.tmux.conf.orig
 	red "original .tmux.conf backed up!"
 fi
@@ -62,8 +56,7 @@ ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
 		git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 }
 
-if [[ -f ~/.zshrc || -h ~/.zshrc ]]
-then
+if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
 	yellow ".zshrc conf file exsit!  +++++  backing up it to ~/.zshrc.pre"
 	mv ~/.zshrc ~/.zshrc.pre
 fi
