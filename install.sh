@@ -27,13 +27,13 @@ fi
 cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
 if [[ $? == 0 ]]
 then
-	sudo apt-get install zsh tmux vim ctags git g++
+	sudo apt-get install zsh tmux vim ctags git g++ tree
 fi
 
 cat /etc/issue | grep -E "Fedora|CentOS" &> /dev/null
 if [[ $? == 0 ]]
 then
-	sudo yum install zsh tmux vim ctags git g++
+	sudo yum install zsh tmux vim ctags git g++ tree
 fi
 
 # backup original configs and set new conf files
