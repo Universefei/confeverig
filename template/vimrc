@@ -1,0 +1,15 @@
+set nu
+set cindent
+set syn=cpp
+set cursorline
+
+"colors murphy
+set nobackup
+set tabstop=4
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+imap jj <esc>
+vmap qq <esc>
+
+map ee :vsp ~/.vimrc <cr>
+
