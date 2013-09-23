@@ -1,15 +1,24 @@
-set nu
+"" line number
+set nu!
+
+"" indent style
 set cindent
+
+"" syntax type
 set syn=cpp
+
+"" display a line under current line
 set cursorline
+"set 
 
-"colors murphy
-set nobackup
-set tabstop=4
+"" how many spaces steps when click tab butten
+set tabstop=2
+"set tabstop=4
+"set tabstop=8
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+"" key mapping"""""""""""""""""""""""""""""""""""""""""""""""""
+
 imap jj <esc>
 vmap qq <esc>
-
 map ee :vsp ~/.vimrc <cr>
 
