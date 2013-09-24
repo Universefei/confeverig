@@ -1,3 +1,5 @@
+" ~/.vimrc  vim user customed config file
+
 """ Common setting""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "" line number
@@ -26,6 +28,8 @@ map ee :vsp ~/.vimrc <cr>
 
 """ Ctags configuration"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set tags=tags;
-set autochdir
+"set tags=tags;
+"set autochdir
+
+set tags=~/postgis/tags
 
