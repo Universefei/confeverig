@@ -72,5 +72,29 @@ chsh -s `which zsh`
 # chsh -s $(which zsh) #this line has the same impact
 
 /usr/bin/env zsh
-source ~/.zshrc
 red "oh-my-zsh configuration completed!!!"
+
+# load optional config
+[[ -d ~/.zsh_myconfig ]] || 
+	mkdir ~/.zsh_myconfig
+
+for wtf in TEMPLATE/*
+do
+	filename=`basename ${wtf}`
+	if [[ -d ${wtf} ]];then
+		[[ -d ~/.zsh_myconfig/${filename} ]] && 
+			mv  ~/.zsh_myconfig/${filename} ~/.zsh_myconfig/${filename}.orig
+		cp -rf ${wtf} ~/.zsh_myconfig/
+	fi	
+done
+unset filename
+
+# prompt for tailored configuration
+echo "you can make symblic link from ~/.zsh_myconfig/*/available to enabled to
+customize your config!!"
+# TODO:need to implement interactive dialog to provide customization
+
+cp TEMPLATE/zshrc_option.bash >> ~/.zsh_myconfig/zshrc_option.bash 
+echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> .zshrc
+source ~/.zshrc
+
