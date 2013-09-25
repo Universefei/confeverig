@@ -21,11 +21,11 @@ function yellow() {
 }
  
 # To print success
-green "Task has been completed"
+#green "Task has been completed"
  
 # To print error
-red "The configuration file does not exist"
+#red "The configuration file does not exist"
  
 # To print warning
-yellow "You have to use higher version."
+#yellow "You have to use higher version."
 

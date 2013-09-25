@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # user customed config file
 
 # zshrc_option.bash:this file implement functions below:
@@ -8,12 +9,11 @@
 #echo "THESE ARE USER OPTIONAL CONFIGURATION********************************************************"
 
 # setting ENV variables
-MYZSH="~/.zsh_myconfig"
-
+MYZSH="$HOME/.zsh_myconfig"
 
 # source user tailored files
 
-for selected in "${MYZSH}/aliases/enabled/*"
+for selected in ${MYZSH}/aliases/enabled/*
 do
 	source ${selected}
 done

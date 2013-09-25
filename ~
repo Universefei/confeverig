@@ -67,24 +67,24 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 yellow "Copying your current PATH and adding it to the end of ~/.zshrc for you"
 echo "export PATH=\$PATH:$PATH" >> ~/.zshrc
 
+red "changing your default shell to zsh!!!!!!!"
+chsh -s `which zsh`
+# chsh -s $(which zsh) #this line has the same impact
+
+/usr/bin/env zsh
+red "oh-my-zsh configuration completed!!!"
 
 # load optional config
-[[ ! -d ~/.zsh_myconfig ]] && {
+[[ ! -d ~/.zsh_myconfig ]] &&
 	mkdir ~/.zsh_myconfig
-	echo "no .zsh_myconfig exist!have created one"
-	} ||
-	echo " .zsh_myconfig dir exist!"
 
-for wtf in ${TEMPLATE}/*
+for wtf in TEMPLATE/*
 do
-	filename=$(basename ${wtf})
+	filename=`basename ${wtf}`
 	if [[ -d ${wtf} ]];then
-		[[ -d ~/.zsh_myconfig/${filename} ]] && {
+		[[ -d ~/.zsh_myconfig/${filename} ]] && 
 			mv  ~/.zsh_myconfig/${filename} ~/.zsh_myconfig/${filename}.orig
-			echo "${filename} backup!"
-			}
 		cp -rf ${wtf} ~/.zsh_myconfig/
-		echo "${wtf} moved!"
 	fi	
 done
 unset filename
@@ -94,12 +94,7 @@ echo "you can make symblic link from ~/.zsh_myconfig/*/available to enabled to
 customize your config!!"
 # TODO:need to implement interactive dialog to provide customization
 
-cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash 
-echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
-red "changing your default shell to zsh!!!!!!!"
-chsh -s `which zsh`
-# chsh -s $(which zsh) #this line has the same impact
-
-red "oh-my-zsh configuration completed!!!"
+cp TEMPLATE/zshrc_option.bash >> ~/.zsh_myconfig/zshrc_option.bash 
+echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> .zshrc
 source ~/.zshrc
 
