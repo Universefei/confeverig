@@ -65,7 +65,7 @@ yellow "Using the oh my zsh template file and adding it to ~/.zshrc"
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 yellow "Copying your current PATH and adding it to the end of ~/.zshrc for you"
-echo "export PATH=\$PATH:$PATH" >> ~/.zshrc
+echo 'export PATH=$PATH:$PATH' >> ~/.zshrc
 
 
 # load optional config
@@ -96,10 +96,13 @@ customize your config!!"
 
 cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash 
 echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
+
+red "oh-my-zsh configuration completed!!!"
+/usr/bin/env zsh
+source $HOME/.zshrc
+
 red "changing your default shell to zsh!!!!!!!"
 chsh -s `which zsh`
 # chsh -s $(which zsh) #this line has the same impact
 
-red "oh-my-zsh configuration completed!!!"
-source ~/.zshrc
 
