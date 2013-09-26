@@ -100,6 +100,8 @@ echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
 
 red "oh-my-zsh configuration completed!!!"
 # because let out this command,spend me 3 days to find problems,why the line below can not ignored?
+# I guess /usr/bin/env zsh execute a command but not source ~/.zshrc so must source it explicitly
+# the errors occured before is rusult from that ~/.zshrc is zsh syntax but not bash syntax
 /usr/bin/env zsh
 source ~/.zshrc
 
