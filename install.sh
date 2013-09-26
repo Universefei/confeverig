@@ -80,10 +80,11 @@ do
 	filename=$(basename ${wtf})
 	if [[ -d ${wtf} ]];then
 		[[ -d ~/.zsh_myconfig/${filename} ]] && {
-			mv  ~/.zsh_myconfig/${filename} ~/.zsh_myconfig/${filename}.orig
-			echo "${filename} backup!"
+			mv  ~/.zsh_myconfig/${filename} ~/.zsh_myconfig/${filename}.orig &> /dev/null &&
+			echo "${filename} backup!" ||
+			echo "DO NOT BACKUP!"
 			}
-		cp -rf ${wtf} ~/.zsh_myconfig/
+		cp -rf ${wtf} ~/.zsh_myconfig/ &&
 		echo "${wtf} moved!"
 	fi	
 done
@@ -98,8 +99,9 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash
 echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
 
 red "oh-my-zsh configuration completed!!!"
+# because let out this command,spend me 3 days to find problems,why the line below can not ignored?
 /usr/bin/env zsh
-source $HOME/.zshrc
+source ~/.zshrc
 
 red "changing your default shell to zsh!!!!!!!"
 chsh -s `which zsh`
