@@ -1,7 +1,6 @@
 " ~/.vimrc  vim user customed config file
 
 """ Common setting""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "" line number
 set nu!
 
@@ -21,15 +20,16 @@ set tabstop=2
 "set tabstop=8
 
 """ Key mapping"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 imap jj <esc>
 vmap qq <esc>
 map ee :vsp ~/.vimrc <cr>
 
 """ Ctags configuration"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 set tags=tags;
 set autochdir
 
 "set tags=~/postgis/tags
+
+""" To support *.md highlight"""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufRead,BufNewFile *.md set filetype=markdown
 
