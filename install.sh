@@ -9,7 +9,8 @@
 # 5. replace ~/.zshrc
 # 6. install oh-my-zsh
 # 7. user tailorded configuration
-# 8. change shell to zsh
+# 8. git clone my github repoes
+# 9. change shell to zsh
 
 # set global variable
 MYCONF="$HOME/myconfig"
@@ -143,7 +144,12 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash
 #echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
 
 
-# 8. change shell to zsh
+# 8. git clone my remote git repoes
+# Universefei/feinote.git
+[ -e ~/feinote ] || git clone git@github.com:Universefei/feinote.git ~/
+
+
+# 9. change shell to zsh
 red "oh-my-zsh configuration completed!!!"
 # because let out this command,spend me 3 days to find problems,why the line below can not ignored?
 # I guess /usr/bin/env zsh execute a command but not source ~/.zshrc so must source it explicitly
