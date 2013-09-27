@@ -12,8 +12,7 @@ TEMPLATE="${MYCONF}/template"
 # load library
 for conf_file in ${LIB}/*
 do
-	echo "sourcing libs"
-	source $conf_file
+	echo "sourcing libs" source $conf_file
 done
 
 

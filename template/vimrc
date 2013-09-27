@@ -6,18 +6,28 @@ set nu!
 
 "" indent style
 set cindent
+"set autoindent
 
 "" syntax type
 set syn=cpp
 
 "" display a line under current line
 set cursorline
-"set 
+"set cursorcolumn
 
 "" how many spaces steps when click tab butten
 set tabstop=2
 "set tabstop=4
 "set tabstop=8
+
+"" characters typeface
+set guifont=Luxi/Mono/9
+
+"" history count
+set history=1000
+
+"" ignore upcase/lowcase when searching
+set ignorecase
 
 """ Key mapping"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap jj <esc>
@@ -25,10 +35,8 @@ vmap qq <esc>
 map ee :vsp ~/.vimrc <cr>
 
 """ Ctags configuration"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tags=tags;
-set autochdir
-
-"set tags=~/postgis/tags
+set tags=tags; 
+set autochdir "set tags=~/postgis/tags
 
 """ To support *.md highlight"""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead,BufNewFile *.md set filetype=markdown
