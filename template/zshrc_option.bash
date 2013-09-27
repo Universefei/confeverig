@@ -13,7 +13,6 @@ echo 'sourcing zshrc_option.bash'
 MYZSH="$HOME/.zsh_myconfig"
 
 # source user tailored files
-
 for selected in ${MYZSH}/aliases/enabled/*
 do
 	source ${selected}
