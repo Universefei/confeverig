@@ -5,6 +5,7 @@
 #	1.set ENV variables 
 # 2.source user customed files when user login
 
+echo 'sourcing zshrc_option.bash'
 # login-shell source file should echo anything??
 #echo "THESE ARE USER OPTIONAL CONFIGURATION********************************************************"
 
