@@ -3,6 +3,8 @@
 
 echo 'sourcing ~/.zshrc'
 
+# sourcing zshrc template from oh-my-zsh
 . ~/.zshrc.from.ohmyzsh
 
+# sourcing zshrc template from myconfig/template/${directory}
 . ~/.zsh_myconfig/zshrc_option.bash
