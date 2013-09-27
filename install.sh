@@ -2,10 +2,12 @@
 
 # install.sh:install my customed configuration
 
+
 # set global variable
 MYCONF="$HOME/myconfig"
 LIB="${MYCONF}/lib"
 TEMPLATE="${MYCONF}/template"
+
 
 # load library
 for conf_file in ${LIB}/*
@@ -14,6 +16,7 @@ do
 	source $conf_file
 done
 
+
 # install packages
 which git &> /dev/null
 if [[ $? != 0 ]]; then 
@@ -21,7 +24,6 @@ if [[ $? != 0 ]]; then
 	please install git before execute this script"
 	#exit #needn't exit 'cause will install later 
 fi
-
 # detect environment and install packages
 cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
 if [[ $? == 0 ]]; then
@@ -32,6 +34,7 @@ cat /etc/issue | grep -E "Fedora|CentOS" &> /dev/null
 if [[ $? == 0 ]]; then
 	sudo yum install zsh tmux vim ctags git g++ tree python
 fi
+
 
 # backup original configs and set new conf files
 if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
@@ -58,6 +61,8 @@ fi
 
 cp $TEMPLATE/zshrc ~/.zshrc &&
 	yellow ".zshrc was updated via /myconfig/template/zshrc!"
+
+
 
 # install oh-my-zsh ( a coustomed zsh configuration )
 ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
@@ -93,6 +98,7 @@ do
 	fi	
 done
 unset filename
+
 
 # prompt for tailored configuration
 echo "you can make symblic link from ~/.zsh_myconfig/*/available to enabled to
