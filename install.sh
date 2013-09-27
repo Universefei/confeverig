@@ -12,7 +12,8 @@ TEMPLATE="${MYCONF}/template"
 # load library
 for conf_file in ${LIB}/*
 do
-	echo "sourcing libs" source $conf_file
+	echo "sourcing libs" 
+	source $conf_file
 done
 
 
@@ -23,6 +24,7 @@ if [[ $? != 0 ]]; then
 	please install git before execute this script"
 	#exit #needn't exit 'cause will install later 
 fi
+
 # detect environment and install packages
 cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
 if [[ $? == 0 ]]; then
@@ -117,5 +119,4 @@ source ~/.zshrc
 red "changing your default shell to zsh!!!!!!!"
 chsh -s `which zsh`
 # chsh -s $(which zsh) #this line has the same impact
-
 
