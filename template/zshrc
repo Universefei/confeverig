@@ -1,0 +1,8 @@
+# This is the primer(main stream) .zshrc template
+# all config file needed execute when starting a new terminal can be put here with a source(.) syntax
+
+echo 'sourcing ~/.zshrc'
+
+. ~/.zshrc.from.ohmyzsh
+
+. ~/.zsh_myconfig/zshrc_option.bash

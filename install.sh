@@ -51,20 +51,24 @@ fi
 cp $TEMPLATE/tmux.conf ~/.tmux.conf &&
 	red "tmux updated to my customed config!"
 
-# install oh-my-zsh ( a coustomed zsh configuration )
-ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
-		git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-}
-
 if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
 	yellow ".zshrc conf file exsit!  +++++  backing up it to ~/.zshrc.pre"
 	mv ~/.zshrc ~/.zshrc.pre
 fi
 
+cp $TEMPLATE/zshrc ~/.zshrc &&
+	yellow ".zshrc was updated via /myconfig/template/zshrc!"
+
+# install oh-my-zsh ( a coustomed zsh configuration )
+ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
+		git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+}
+
 yellow "Using the oh my zsh template file and adding it to ~/.zshrc"
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc.from.ohmyzsh
 
 yellow "Copying your current PATH and adding it to the end of ~/.zshrc for you"
+# why needed this sentence? DO NOT KNOW
 echo 'export PATH=$PATH:$PATH' >> ~/.zshrc
 
 
@@ -96,7 +100,7 @@ customize your config!!"
 # TODO:need to implement interactive dialog to provide customization
 
 cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash 
-echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
+#echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
 
 red "oh-my-zsh configuration completed!!!"
 # because let out this command,spend me 3 days to find problems,why the line below can not ignored?
