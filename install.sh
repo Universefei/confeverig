@@ -2,6 +2,14 @@
 
 # install.sh:install my customed configuration
 
+# 1. install packages
+# 2. install Dropbox
+# 3. replace ~/.vimrc
+# 4. replace ~/.tmux.conf
+# 5. replace ~/.zshrc
+# 6. install oh-my-zsh
+# 7. user tailorded configuration
+# 8. change shell to zsh
 
 # set global variable
 MYCONF="$HOME/myconfig"
@@ -17,14 +25,13 @@ do
 done
 
 
-# install packages
+# 1. install packages
 which git &> /dev/null
 if [[ $? != 0 ]]; then 
 	yellow "you havn't install git
 	please install git before execute this script"
 	#exit #needn't exit 'cause will install later 
 fi
-
 # detect environment and install packages
 cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
 if [[ $? == 0 ]]; then
@@ -37,7 +44,15 @@ if [[ $? == 0 ]]; then
 fi
 
 
-# backup original configs and set new conf files
+# 2. install Dropbox
+# all commands below are from guidance of dropbox homepage opened under Linux OS
+# references:https://www.dropbox.com/install?os=lnx
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+chmod +x ~/.dropbox-dist/dropboxd
+~/.dropbox-dist/dropboxd
+
+
+# 3. replace ~/.vimrc
 if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
 	mv ~/.vimrc ~/.vimrc.orig
 	red "original .vimrc backed up!"
@@ -47,6 +62,8 @@ if (cp $TEMPLATE/vimrc ~/.vimrc); then
 	red "vim updated to my customed config!"
 fi
 
+
+# 4. replace ~/.tmux.conf
 if [[ -f ~/.tmux.conf || -h ~/.tmux.conf ]]; then
 	mv ~/.tmux.conf ~/.tmux.conf.orig
 	red "original .tmux.conf backed up!"
@@ -55,6 +72,8 @@ fi
 cp $TEMPLATE/tmux.conf ~/.tmux.conf &&
 	red "tmux updated to my customed config!"
 
+
+# 5. replace ~/.zshrc
 if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
 	yellow ".zshrc conf file exsit!  +++++  backing up it to ~/.zshrc.pre"
 	mv ~/.zshrc ~/.zshrc.pre
@@ -65,7 +84,7 @@ cp $TEMPLATE/zshrc ~/.zshrc &&
 
 
 
-# install oh-my-zsh ( a coustomed zsh configuration )
+# 6. install oh-my-zsh ( a coustomed zsh configuration )
 ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
 		git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 }
@@ -78,7 +97,7 @@ yellow "Copying your current PATH and adding it to the end of ~/.zshrc for you"
 echo 'export PATH=$PATH:$PATH' >> ~/.zshrc
 
 
-# load optional config
+# 7. user tailorded configuration 
 [[ ! -d ~/.zsh_myconfig ]] && {
 	mkdir ~/.zsh_myconfig
 	echo "no .zsh_myconfig exist!have created one"
@@ -99,23 +118,21 @@ do
 	fi	
 done
 unset filename
-
-
 # prompt for tailored configuration
 echo "you can make symblic link from ~/.zsh_myconfig/*/available to enabled to
 customize your config!!"
 # TODO:need to implement interactive dialog to provide customization
-
 cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash 
 #echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
 
+
+# 8. change shell to zsh
 red "oh-my-zsh configuration completed!!!"
 # because let out this command,spend me 3 days to find problems,why the line below can not ignored?
 # I guess /usr/bin/env zsh execute a command but not source ~/.zshrc so must source it explicitly
 # the errors occured before is rusult from that ~/.zshrc is zsh syntax but not bash syntax
 /usr/bin/env zsh
 source ~/.zshrc
-
 red "changing your default shell to zsh!!!!!!!"
 chsh -s `which zsh`
 # chsh -s $(which zsh) #this line has the same impact
