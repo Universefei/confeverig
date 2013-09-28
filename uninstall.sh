@@ -3,4 +3,3 @@
 #uninstall.sh: uninstall myconfig and recover to previous status
 
 
-

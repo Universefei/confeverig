@@ -53,9 +53,9 @@ do
 	read -p "DO YOU WANT TO INSTALL Dropbox? [Yes]or[No]?" RESP
 	case $RESP in
 	Y|y|yes|Yes|YES)
-		cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+		(cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 		chmod +x ~/.dropbox-dist/dropboxd
-		~/.dropbox-dist/dropboxd
+		~/.dropbox-dist/dropboxd) &&
 		echo 'Dropbox INSTALL COMPLETED!'
 		break
 		;;
