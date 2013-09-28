@@ -159,6 +159,6 @@ red "oh-my-zsh configuration completed!!!"
 /usr/bin/env zsh
 source ~/.zshrc
 red "changing your default shell to zsh!!!!!!!"
-chsh -s `which zsh`
+sudo chsh -s `which zsh`
 # chsh -s $(which zsh) #this line has the same impact
 
