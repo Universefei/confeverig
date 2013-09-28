@@ -145,7 +145,10 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash
 
 # 8. git clone my remote git repoes
 # Universefei/feinote.git
-[ -e ~/feinote ] || git clone git@github.com:Universefei/feinote.git ~/
+[ -e ~/feinote ] || { 
+				git clone git@github.com:Universefei/feinote.git ~/feinote &&
+								echo 'git clone Universefei/feinote completed'
+} && echo '~/feinote exsit, do NOT clone frome github'
 
 
 # 9. change shell to zsh
