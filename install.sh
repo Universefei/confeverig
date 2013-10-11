@@ -36,12 +36,12 @@ fi
 # detect environment and install packages
 cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
 if [[ $? == 0 ]]; then
-	sudo apt-get install zsh tmux vim ctags git g++ tree python
+	sudo apt-get install zsh tmux vim ctags git g++ tree python tig
 fi
 
 cat /etc/issue | grep -E "Fedora|CentOS" &> /dev/null
 if [[ $? == 0 ]]; then
-	sudo yum install zsh tmux vim ctags git g++ tree python
+	sudo yum install zsh tmux vim ctags git g++ tree python tig
 fi
 
 
