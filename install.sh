@@ -4,7 +4,7 @@
 
 # 1. install packages
 # 2. install Dropbox
-# 3. replace ~/.vimrc
+# 3. replace ~/.vimrc and install vim plugins
 # 4. replace ~/.tmux.conf
 # 5. replace ~/.zshrc
 # 6. install oh-my-zsh
@@ -27,6 +27,7 @@ done
 
 
 # 1. install packages
+packages='zsh tmux vim ctags git g++ tree python tig curl'
 which git &> /dev/null
 if [[ $? != 0 ]]; then 
 	yellow "you havn't install git
@@ -36,12 +37,12 @@ fi
 # detect environment and install packages
 cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
 if [[ $? == 0 ]]; then
-	sudo apt-get install zsh tmux vim ctags git g++ tree python tig
+	sudo apt-get install ${packages}
 fi
 
 cat /etc/issue | grep -E "Fedora|CentOS" &> /dev/null
 if [[ $? == 0 ]]; then
-	sudo yum install zsh tmux vim ctags git g++ tree python tig
+	sudo yum install ${packages}
 fi
 
 
@@ -69,7 +70,7 @@ do
 done
 
 
-# 3. replace ~/.vimrc
+# 3. replace ~/.vimrc and install vim plugins
 if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
 	mv ~/.vimrc ~/.vimrc.orig
 	red "original .vimrc backed up!"
@@ -78,6 +79,17 @@ fi
 if (cp $TEMPLATE/vimrc ~/.vimrc); then
 	red "vim updated to my customed config!"
 fi
+# install pathogen from https://github.com/tpope/vim-pathogen
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+curl -Sso ~/.vim/autoload/pathogen.vim \
+    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+# backup origin ~/.vim folder and replace with myconfig/template/vim
+cp ${TEMPLATE}/vim/bundle -rf ~/.vim/bundle
+# if not in .vim folder ,plan B is to git clone plugin repos in GitHub
+pushd ~/.vim/bundle
+git clone git@github.com:slim-template/vim-slim.git
+git clone git://github.com/msanders/snipmate.vim.git
+popd
 
 
 # 4. replace ~/.tmux.conf

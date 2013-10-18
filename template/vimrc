@@ -29,15 +29,19 @@ set history=1000
 "" ignore upcase/lowcase when searching
 set ignorecase
 
-""" Key mapping"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" Key mapping""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap jj <esc>
 vmap qq <esc>
 map ee :vsp ~/.vimrc <cr>
 
-""" Ctags configuration"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" Ctags configuration""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set tags=tags; 
 set autochdir "set tags=~/postgis/tags
 
-""" To support *.md highlight"""""""""""""""""""""""""""""""""""""""""""""""""""
+""" To support *.md highlight""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead,BufNewFile *.md set filetype=markdown
 
+""" Needed by pathogen"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call pathogen#infect()
+syntax on
+filetype plugin indent on
