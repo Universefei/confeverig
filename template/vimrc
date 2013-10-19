@@ -44,4 +44,5 @@ au BufRead,BufNewFile *.md set filetype=markdown
 """ Needed by pathogen"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call pathogen#infect()
 syntax on
-filetype plugin indent on
+" the following command has side effect:trigger automaticly code fold when open
+"filetype plugin indent on
