@@ -4,7 +4,7 @@
 
 # 1. install packages
 # 2. install Dropbox
-# 3. replace ~/.vimrc and install vim plugins
+# 3. about vim editer
 # 4. replace ~/.tmux.conf
 # 5. replace ~/.zshrc
 # 6. install oh-my-zsh
