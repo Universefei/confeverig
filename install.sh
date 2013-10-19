@@ -86,10 +86,11 @@ curl -Sso ~/.vim/autoload/pathogen.vim \
 # backup origin ~/.vim folder and replace with myconfig/template/vim
 cp ${TEMPLATE}/vim/bundle -rf ~/.vim/bundle
 # if not in .vim folder ,plan B is to git clone plugin repos in GitHub
-pushd ~/.vim/bundle
-git clone git@github.com:slim-template/vim-slim.git
-git clone git://github.com/msanders/snipmate.vim.git
-popd
+#pushd ~/.vim/bundle
+#git clone git@github.com:slim-template/vim-slim.git
+#git clone git://github.com/msanders/snipmate.vim.git
+#git clone https://github.com/plasticboy/vim-markdown.git
+#popd
 
 
 # 4. replace ~/.tmux.conf
