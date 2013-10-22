@@ -2,15 +2,29 @@
 
 # install.sh:install my customed configuration
 
-# 1. install packages
-# 2. install Dropbox
-# 3. about vim editer
-# 4. replace ~/.tmux.conf
-# 5. replace ~/.zshrc
-# 6. install oh-my-zsh
-# 7. user tailorded configuration
-# 8. git clone my github repoes
-# 9. change shell to zsh
+###############################################################################
+#                                                                             #
+# myconfig 1.00 (c) by Fei Lunzhou 2013                                       #
+# https://github.com/Universefei/myconfig                                     #
+#                                                                             #
+# Created: 2013/09/21                                                         #
+# Last Updated: 2013/10/22                                                    #
+#                                                                             #
+# myconfig is released under the GPL license.                                 #
+# See LICENSE file for details.                                               #
+#                                                                             #
+# 1. install packages                                                         #
+# 2. install Dropbox                                                          #
+# 3. about vim editer                                                         #
+# 4. replace ~/.tmux.conf                                                     #
+# 5. replace ~/.zshrc                                                         #
+# 6. install oh-my-zsh                                                        #
+# 7. user tailorded configuration                                             #
+# 8. git clone my github repoes                                               #
+# 9. change shell to zsh                                                      #
+#                                                                             #
+###############################################################################
+
 
 # set global variable
 MYCONF="$HOME/myconfig"
@@ -26,7 +40,8 @@ do
 done
 
 
-# 1. install packages
+#### [ 1. install packages ]###################################################
+
 packages='zsh tmux vim ctags git g++ tree python tig curl'
 which git &> /dev/null
 if [[ $? != 0 ]]; then 
@@ -46,8 +61,9 @@ if [[ $? == 0 ]]; then
 fi
 
 
-# 2. install Dropbox
-# all commands below are from guidance of dropbox homepage opened under Linux OS
+#### [ 2. install Dropbox ]####################################################
+
+# all commands below are from guidance of dropbox homepage 
 # references:https://www.dropbox.com/install?os=lnx
 while true
 do
@@ -70,7 +86,8 @@ do
 done
 
 
-# 3. replace ~/.vimrc and install vim plugins
+#### [ 3. replace ~/.vimrc and install vim plugins ]###########################
+
 if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
 	mv ~/.vimrc ~/.vimrc.orig
 	red "original .vimrc backed up!"
@@ -92,7 +109,8 @@ git clone https://github.com/plasticboy/vim-markdown.git
 popd
 
 
-# 4. replace ~/.tmux.conf
+#### [ 4. replace ~/.tmux.conf ]###############################################
+
 if [[ -f ~/.tmux.conf || -h ~/.tmux.conf ]]; then
 	mv ~/.tmux.conf ~/.tmux.conf.orig
 	red "original .tmux.conf backed up!"
@@ -102,7 +120,8 @@ cp $TEMPLATE/tmux.conf ~/.tmux.conf &&
 	red "tmux updated to my customed config!"
 
 
-# 5. replace ~/.zshrc
+#### [ 5. replace ~/.zshrc ]###################################################
+
 if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
 	yellow ".zshrc conf file exsit!  +++++  backing up it to ~/.zshrc.pre"
 	mv ~/.zshrc ~/.zshrc.pre
@@ -112,8 +131,8 @@ cp $TEMPLATE/zshrc ~/.zshrc &&
 	yellow ".zshrc was updated via /myconfig/template/zshrc!"
 
 
+#### [ 6. install oh-my-zsh ( a coustomed zsh configuration ) ]################
 
-# 6. install oh-my-zsh ( a coustomed zsh configuration )
 ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
 		git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 }
@@ -126,7 +145,8 @@ yellow "Copying your current PATH and adding it to the end of ~/.zshrc for you"
 echo 'export PATH=$PATH:$PATH' >> ~/.zshrc
 
 
-# 7. user tailorded configuration 
+#### [ 7. user tailorded configuration  ]######################################
+
 [[ ! -d ~/.zsh_myconfig ]] && {
 	mkdir ~/.zsh_myconfig
 	echo "no .zsh_myconfig exist!have created one"
@@ -155,7 +175,8 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash
 #echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
 
 
-# 8. git clone my remote git repoes
+#### [ 8. git clone my remote git repoes ]#####################################
+
 # Universefei/feinote.git
 [ -e ~/feinote ] || { 
 				git clone git@github.com:Universefei/feinote.git ~/feinote &&
@@ -163,7 +184,8 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash
 } && echo '~/feinote exsit, do NOT clone frome github'
 
 
-# 9. change shell to zsh
+#### [ 9. change shell to zsh ]################################################
+
 red "oh-my-zsh configuration completed!!!"
 # because let out this command,spend me 3 days to find problems,why the line below can not ignored?
 # I guess /usr/bin/env zsh execute a command but not source ~/.zshrc so must source it explicitly
@@ -173,4 +195,5 @@ source ~/.zshrc
 red "changing your default shell to zsh!!!!!!!"
 sudo chsh -s `which zsh`
 # chsh -s $(which zsh) #this line has the same impact
+
 
