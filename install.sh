@@ -8,7 +8,7 @@
 # https://github.com/Universefei/myconfig                                     #
 #                                                                             #
 # Created: 2013/09/21                                                         #
-# Last Updated: 2013/10/22                                                    #
+# Last Updated: 2013/10/23                                                    #
 #                                                                             #
 # myconfig is released under the GPL license.                                 #
 # See LICENSE file for details.                                               #
@@ -86,7 +86,7 @@ do
 done
 
 
-#### [ 3. replace ~/.vimrc and install vim plugins ]###########################
+#### [ 3. about vim editer ]###########################
 
 if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
 	mv ~/.vimrc ~/.vimrc.orig
@@ -96,17 +96,22 @@ fi
 if (cp $TEMPLATE/vimrc ~/.vimrc); then
 	red "vim updated to my customed config!"
 fi
+
+## Install Plugins
 # install pathogen from https://github.com/tpope/vim-pathogen
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -Sso ~/.vim/autoload/pathogen.vim \
     https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 # backup origin ~/.vim folder and replace with myconfig/template/vim
-#cp ${TEMPLATE}/vim/bundle/* -rf ~/.vim/bundle
+# NOTE: vim plugins' folder must exclude .git subfolder if wanna push to Github
+mkdir -p ~/.vim/bundle.bak
+cp -rf ~/bundle/* ~/.vim/bundle.bak
+cp ${TEMPLATE}/vim/bundle/* -rf ~/.vim/bundle
 # if not in .vim folder ,plan B is to git clone plugin repos in GitHub
-pushd ~/.vim/bundle
-git clone git://github.com/msanders/snipmate.vim.git
-git clone https://github.com/plasticboy/vim-markdown.git
-popd
+# pushd ~/.vim/bundle
+# git clone git://github.com/msanders/snipmate.vim.git
+# git clone https://github.com/plasticboy/vim-markdown.git
+# popd
 
 
 #### [ 4. replace ~/.tmux.conf ]###############################################
