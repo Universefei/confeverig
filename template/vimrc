@@ -1,6 +1,9 @@
 " ~/.vimrc  vim user customed config file
 
-""" Common setting""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              COMMON SETTINGS                                "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "" line number
 set nu!
 
@@ -34,6 +37,11 @@ imap jj <esc>
 vmap qq <esc>
 map ee :vsp ~/.vimrc <cr>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                        PACKAGES REQUIREMENTS                                "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """ Ctags configuration""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set tags=tags; 
 set autochdir "set tags=~/postgis/tags
@@ -46,3 +54,8 @@ call pathogen#infect()
 syntax on
 " the following command has side effect:trigger automaticly code fold when open
 "filetype plugin indent on
+
+""" To Save codefold automatically when exit VIM"""""""""""""""""""""""""""""""
+au BufWinLeave * silent mkview
+au BufWinEnter * silent loadview
+
