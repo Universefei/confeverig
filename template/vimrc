@@ -36,6 +36,7 @@ set ignorecase
 imap jj <esc>
 vmap qq <esc>
 map ee :vsp ~/.vimrc <cr>
+map '' :tnext <cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
