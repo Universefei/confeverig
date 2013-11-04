@@ -20,10 +20,10 @@ set cursorline
 
 "" how many spaces steps when click tab butten
 "" http://hi.baidu.com/ludonghai715/item/ee93fb04d6a6df143a53eebd
-set tabstop=2
+set tabstop=4
 "set tabstop=4
 "set tabstop=8
-set shiftwidth=2
+set shiftwidth=4
 "set softtabstop
 
 "" characters typeface
@@ -65,4 +65,11 @@ au BufWinLeave * silent mkview
 au BufWinEnter * silent loadview
 
 
+"" how many spaces steps when click tab butten
+"" http://hi.baidu.com/ludonghai715/item/ee93fb04d6a6df143a53eebd
+set tabstop=4
+"set tabstop=4
+"set tabstop=8
+set shiftwidth=4
+"set softtabstop
 
