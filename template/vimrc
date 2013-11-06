@@ -40,7 +40,7 @@ imap jj <esc>
 vmap qq <esc>
 map ee :vsp ~/.vimrc <cr>
 "" ctags shortcut
-map nn :tnext <cr>
+map <F5> :tnext <cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
