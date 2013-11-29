@@ -60,12 +60,12 @@ au BufRead,BufNewFile *.md set filetype=markdown
 call pathogen#infect()
 syntax on
 " the following command has side effect:trigger automaticly code fold when open
-filetype plugin indent on
+"filetype plugin indent on
 
 
 " To Save codefold automatically when exit VIM--------------------------------
-au BufWinLeave * silent mkview
-au BufWinEnter * silent loadview
+"au BufWinLeave * silent mkview
+"au BufWinEnter * silent loadview
 
 
 "" how many spaces steps when click tab butten

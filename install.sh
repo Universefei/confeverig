@@ -4,24 +4,24 @@
 
 ###############################################################################
 #                                                                             #
-# myconfig 1.00 (c) by Fei Lunzhou 2013                                       #
-# https://github.com/Universefei/myconfig                                     #
+#        myconfig 1.00 (c) by Fei Lunzhou 2013                                #
+#        https://github.com/Universefei/myconfig                              #
 #                                                                             #
-# Created: 2013/09/21                                                         #
-# Last Updated: 2013/10/23                                                    #
+#        Created: 2013/09/21                                                  #
+#        Last Updated: 2013/10/23                                             #
 #                                                                             #
-# myconfig is released under the GPL license.                                 #
-# See LICENSE file for details.                                               #
+#        myconfig is released under the GPL license.                          #
+#        See LICENSE file for details.                                        #
 #                                                                             #
-# 1. install packages                                                         #
-# 2. install Dropbox                                                          #
-# 3. about vim editer                                                         #
-# 4. replace ~/.tmux.conf                                                     #
-# 5. replace ~/.zshrc                                                         #
-# 6. install oh-my-zsh                                                        #
-# 7. user tailorded configuration                                             #
-# 8. git clone my github repoes                                               #
-# 9. change shell to zsh                                                      #
+#        1. install packages                                                  #
+#        2. install Dropbox                                                   #
+#        3. about vim editer                                                  #
+#        4. replace ~/.tmux.conf                                              #
+#        5. replace ~/.zshrc                                                  #
+#        6. install oh-my-zsh                                                 #
+#        7. user tailorded configuration                                      #
+#        8. git clone my github repoes                                        #
+#        9. change shell to zsh                                               #
 #                                                                             #
 ###############################################################################
 
@@ -40,9 +40,12 @@ do
 done
 
 
-#### [ 1. install packages ]###################################################
+# ==============================================================================
+# 1. Install Packages
+# ==============================================================================
 
-packages='zsh tmux vim ctags git g++ tree python tig curl'
+packages='zsh tmux vim ctags git g++ tree python tig curl rubygems'
+#jekyllreq=`
 which git &> /dev/null
 if [[ $? != 0 ]]; then 
 	yellow "you havn't install git
@@ -61,7 +64,9 @@ if [[ $? == 0 ]]; then
 fi
 
 
-#### [ 2. install Dropbox ]####################################################
+# ==============================================================================
+# 2. Install Dropbox
+# ==============================================================================
 
 # all commands below are from guidance of dropbox homepage 
 # references:https://www.dropbox.com/install?os=lnx
@@ -86,7 +91,9 @@ do
 done
 
 
-#### [ 3. about vim editer ]###########################
+# ==============================================================================
+# 3. configuration of VIM editor
+# ==============================================================================
 
 if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
 	mv ~/.vimrc ~/.vimrc.orig
@@ -114,7 +121,9 @@ cp ${TEMPLATE}/vim/bundle/* -rf ~/.vim/bundle
 # popd
 
 
-#### [ 4. replace ~/.tmux.conf ]###############################################
+# ==============================================================================
+# 4. Replace ~/.tmux.conf
+# ==============================================================================
 
 if [[ -f ~/.tmux.conf || -h ~/.tmux.conf ]]; then
 	mv ~/.tmux.conf ~/.tmux.conf.orig
@@ -125,7 +134,9 @@ cp $TEMPLATE/tmux.conf ~/.tmux.conf &&
 	red "tmux updated to my customed config!"
 
 
-#### [ 5. replace ~/.zshrc ]###################################################
+# ==============================================================================
+# 5. Replace ~/.zshrc
+# ==============================================================================
 
 if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
 	yellow ".zshrc conf file exsit!  +++++  backing up it to ~/.zshrc.pre"
@@ -136,7 +147,9 @@ cp $TEMPLATE/zshrc ~/.zshrc &&
 	yellow ".zshrc was updated via /myconfig/template/zshrc!"
 
 
-#### [ 6. install oh-my-zsh ( a coustomed zsh configuration ) ]################
+# ==============================================================================
+# 6. Install oh-my-zsh
+# ==============================================================================
 
 ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
 		git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -150,7 +163,9 @@ yellow "Copying your current PATH and adding it to the end of ~/.zshrc for you"
 echo 'export PATH=$PATH:$PATH' >> ~/.zshrc
 
 
-#### [ 7. user tailorded configuration  ]######################################
+# ==============================================================================
+# 7. User tailorded configuration
+# ==============================================================================
 
 [[ ! -d ~/.zsh_myconfig ]] && {
 	mkdir ~/.zsh_myconfig
@@ -180,7 +195,9 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash
 #echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
 
 
-#### [ 8. git clone my remote git repoes ]#####################################
+# ==============================================================================
+# 8. Git clone my remote git repos
+# ==============================================================================
 
 # Universefei/feinote.git
 [ -e ~/feinote ] || { 
@@ -189,7 +206,23 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash
 } && echo '~/feinote exsit, do NOT clone frome github'
 
 
-#### [ 9. change shell to zsh ]################################################
+# ==============================================================================
+# 9. Draw Show
+# ==============================================================================
+
+green ' ________       .__   ___                               __                       '
+green '|    ____|      |__\ |   |                             |  |                      '
+green '|   |     _____  __  |   |     __    _  _ ____  _______|  | ___  ______  __    _.'
+green '|   |___./ __  \|  | |   |    |  |  | |/ "    |/       |   "   |/      \|  |  | |'
+green '|   ____| (__) ||  | |   |    |  |  | |   __  | ___   /|   ___ |   __   |  |  | |'
+green '|   |   |   ___||  | |   |____|  |__| |  |  | |  /   /_|  |  | |  (__)  |  |__| |'
+green '|   |   \  \___ |  | |        |       |  |  | | /      |  |  | |        |       |'
+green '|___|    \_____/|__| \___,____|\____,_|__|  \_|/______/|__|  |_|\______/ \____,_|'
+
+
+# ==============================================================================
+# 10. Change shell to zsh
+# ==============================================================================
 
 red "oh-my-zsh configuration completed!!!"
 # because let out this command,spend me 3 days to find problems,why the line below can not ignored?
