@@ -30,7 +30,7 @@ set shiftwidth=4
 "set guifont=Luxi/Mono/9
 
 "" history count
-set history=1000
+set history=5000
 
 "" ignore upcase/lowcase when searching
 set ignorecase
