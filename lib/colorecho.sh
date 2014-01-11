@@ -20,6 +20,7 @@ function yellow() {
 	echo -e "$YELLOW$*$NORMAL"
 }
  
+#test below:
 # To print success
 #green "Task has been completed"
  
