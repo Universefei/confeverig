@@ -201,7 +201,7 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash
 
 # Universefei/feinote.git
 [ -e ~/feinote ] || { 
-				git clone git@github.com:Universefei/feinote.git ~/feinote &&
+				git clone https://github.com/Universefei/feinote.git ~/feinote &&
 								echo 'git clone Universefei/feinote completed'
 } && echo '~/feinote exsit, do NOT clone frome github'
 
