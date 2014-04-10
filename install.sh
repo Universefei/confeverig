@@ -35,10 +35,9 @@ TEMPLATE="${MYCONF}/template"
 # load library
 for conf_file in ${LIB}/*
 do
-	echo "sourcing libs" 
-	source $conf_file
+	echo "sourcing libs"
+  source $conf_file
 done
-
 
 # ==============================================================================
 # 1. Install Packages
@@ -47,10 +46,10 @@ done
 packages='zsh tmux vim ctags git g++ tree python tig curl rubygems'
 #jekyllreq=`
 which git &> /dev/null
-if [[ $? != 0 ]]; then 
+if [[ $? != 0 ]]; then
 	yellow "you havn't install git
 	please install git before execute this script"
-	#exit #needn't exit 'cause will install later 
+	#exit #needn't exit 'cause will install later
 fi
 # detect environment and install packages
 cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
@@ -63,12 +62,11 @@ if [[ $? == 0 ]]; then
 	sudo yum install ${packages}
 fi
 
-
 # ==============================================================================
 # 2. Install Dropbox
 # ==============================================================================
 
-# all commands below are from guidance of dropbox homepage 
+# all commands below are from guidance of dropbox homepage.
 # references:https://www.dropbox.com/install?os=lnx
 while true
 do
@@ -89,6 +87,7 @@ do
 		;;
 	esac
 done
+
 
 
 # ==============================================================================
