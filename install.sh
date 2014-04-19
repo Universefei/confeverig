@@ -43,7 +43,7 @@ done
 # 1. Install Packages
 # ==============================================================================
 
-packages='zsh tmux vim ctags git g++ tree python tig curl rubygems'
+packages='zsh tmux vim ctags git g++ tree python tig curl indicator-cpufreq'
 #jekyllreq=`
 which git &> /dev/null
 if [[ $? != 0 ]]; then
@@ -119,6 +119,8 @@ cp ${TEMPLATE}/vim/bundle/* -rf ~/.vim/bundle
 # git clone https://github.com/plasticboy/vim-markdown.git
 # popd
 
+# Install Vim Plungin manager Vundle
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 # ==============================================================================
 # 4. Replace ~/.tmux.conf
