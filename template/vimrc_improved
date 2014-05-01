@@ -180,7 +180,7 @@ set fo-=o         " Do not insert the current comment leader after hitting 'o' o
 set fo-=r         " Do not automatically insert a comment leader after an enter
 set fo-=t         " Do not auto-wrap text using textwidth (does not apply to comments)
 
-set nowrap
+" set nowrap
 set textwidth=0   " Don't wrap lines by default
 set wildmode=longest,list " At command line, complete longest common string, then list alternatives.
 
@@ -235,12 +235,12 @@ endif
 :highlight TrailWhitespace ctermbg=red guibg=red
 :match TrailWhitespace /\s\+$\| \+\ze\t/
 
-set nowrap
+" set nowrap
 set whichwrap=b,s,<,>,[,],h,l
 
 " list setting
 set list
-set listchars=tab:▸-,trail:⋅,extends:❯,precedes:❮
+" set listchars=tab:▸-,trail:⋅,extends:❯,precedes:❮
 " relative number
 "set relativenumber
 " make relative number set for all buffer
@@ -275,7 +275,7 @@ nnoremap ~ ma*
 " use left & right key to switch between buffers
 noremap <silent> <Left> :bp<CR>
 noremap <silent> <Right> :bn<CR>
-noremap <S-h> :bp<CR>
+" noremap <S-h> :bp<CR>
 noremap <S-l> :bn<CR>
 
 " map up & down to gk & gj for convenient in wrap model
