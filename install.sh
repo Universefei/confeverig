@@ -94,25 +94,25 @@ done
 # 3. configuration of VIM editor
 # ==============================================================================
 
+# Install Vundle for VIM plugins management
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
 	mv ~/.vimrc ~/.vimrc.orig
 	red "original .vimrc backed up!"
 fi
 
-if (cp $TEMPLATE/vimrc ~/.vimrc); then
+if (cp $TEMPLATE/_vimrc ~/.vimrc); then
 	red "vim updated to my customed config!"
 fi
 
-## Install Plugins
-# install pathogen from https://github.com/tpope/vim-pathogen
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-curl -Sso ~/.vim/autoload/pathogen.vim \
-    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 # backup origin ~/.vim folder and replace with myconfig/template/vim
 # NOTE: vim plugins' folder must exclude .git subfolder if wanna push to Github
-mkdir -p ~/.vim/bundle.bak
-cp -rf ~/bundle/* ~/.vim/bundle.bak
-cp ${TEMPLATE}/vim/bundle/* -rf ~/.vim/bundle
+#```
+#mkdir -p ~/.vim/bundle.bak
+#cp -rf ~/bundle/* ~/.vim/bundle.bak
+#cp ${TEMPLATE}/vim/bundle/* -rf ~/.vim/bundle
+#```
 # if not in .vim folder ,plan B is to git clone plugin repos in GitHub
 # pushd ~/.vim/bundle
 # git clone git://github.com/msanders/snipmate.vim.git
@@ -129,7 +129,7 @@ if [[ -f ~/.tmux.conf || -h ~/.tmux.conf ]]; then
 	red "original .tmux.conf backed up!"
 fi
 
-cp $TEMPLATE/tmux.conf ~/.tmux.conf &&
+cp $TEMPLATE/_tmux.conf ~/.tmux.conf &&
 	red "tmux updated to my customed config!"
 
 
@@ -142,7 +142,7 @@ if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
 	mv ~/.zshrc ~/.zshrc.pre
 fi
 
-cp $TEMPLATE/zshrc ~/.zshrc &&
+cp $TEMPLATE/_zshrc ~/.zshrc &&
 	yellow ".zshrc was updated via /myconfig/template/zshrc!"
 
 
