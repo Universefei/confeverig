@@ -44,7 +44,7 @@ done
 # ==============================================================================
 
 packages='zsh tmux vim ctags git g++ tree python tig curl rubygems'
-#jekyllreq=`
+
 which git &> /dev/null
 if [[ $? != 0 ]]; then
 	yellow "you havn't install git
@@ -106,20 +106,6 @@ if (cp $TEMPLATE/_vimrc ~/.vimrc); then
 	red "vim updated to my customed config!"
 fi
 
-# backup origin ~/.vim folder and replace with myconfig/template/vim
-# NOTE: vim plugins' folder must exclude .git subfolder if wanna push to Github
-#```
-#mkdir -p ~/.vim/bundle.bak
-#cp -rf ~/bundle/* ~/.vim/bundle.bak
-#cp ${TEMPLATE}/vim/bundle/* -rf ~/.vim/bundle
-#```
-# if not in .vim folder ,plan B is to git clone plugin repos in GitHub
-# pushd ~/.vim/bundle
-# git clone git://github.com/msanders/snipmate.vim.git
-# git clone https://github.com/plasticboy/vim-markdown.git
-# popd
-
-
 # ==============================================================================
 # 4. Replace ~/.tmux.conf
 # ==============================================================================
@@ -132,7 +118,6 @@ fi
 cp $TEMPLATE/_tmux.conf ~/.tmux.conf &&
 	red "tmux updated to my customed config!"
 
-
 # ==============================================================================
 # 5. Replace ~/.zshrc
 # ==============================================================================
@@ -144,7 +129,6 @@ fi
 
 cp $TEMPLATE/_zshrc ~/.zshrc &&
 	yellow ".zshrc was updated via /myconfig/template/zshrc!"
-
 
 # ==============================================================================
 # 6. Install oh-my-zsh
@@ -197,12 +181,6 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash
 # ==============================================================================
 # 8. Git clone my remote git repos
 # ==============================================================================
-
-# Universefei/feinote.git
-[ -e ~/feinote ] || { 
-				git clone https://github.com/Universefei/feinote.git ~/feinote &&
-								echo 'git clone Universefei/feinote completed'
-} && echo '~/feinote exsit, do NOT clone frome github'
 
 
 # ==============================================================================
