@@ -30,8 +30,9 @@ autocmd! bufwritepost .vimrc source %
 " Vundle {{{ -----------------------------------------------------------------
 filetype off
 filetype plugin indent off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Plugin 'gmarik/vundle'
 """""""""""""""""""""""""""""easymotion
@@ -321,3 +322,6 @@ endif
 
 autocmd BufReadPre * if getfsize(expand("%")) > 10000000 | syntax off | endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call vundle#end()
+filetype plugin indent on

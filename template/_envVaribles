@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+########
+CLASSPATH=/
+
+export CLASSPATH
