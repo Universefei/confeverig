@@ -155,9 +155,9 @@ set fo-=t         " Do not auto-wrap text using textwidth (does not apply to com
 
 set backspace=indent,eol,start
 
-set tabstop=2     " Set the default tabstop
-set softtabstop=2
-set shiftwidth=2  " Set the default shift width for indents
+set tabstop=4     " Set the default tabstop
+set softtabstop=4
+set shiftwidth=4  " Set the default shift width for indents
 set smarttab      " Smarter tab levels
 set expandtab
 
