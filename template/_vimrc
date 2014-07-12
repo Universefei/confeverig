@@ -192,7 +192,7 @@ set cursorline    " Highlight the current line
 
 " Have a different background in GUI and terminal modes.
 if has('gui_running')
-    set cursorcolumn  " Highlight the current column
+    " set cursorcolumn  " Highlight the current column
     set background=dark
     :silent! colorscheme solarized
 else
@@ -202,17 +202,17 @@ endif
 " :silent! colorscheme solarized
 
 " Highlight trailing whitespace
-:highlight TrailWhitespace ctermbg=red guibg=red
-:match TrailWhitespace /\s\+$\| \+\ze\t/
+" :highlight TrailWhitespace ctermbg=red guibg=red
+" :match TrailWhitespace /\s\+$\| \+\ze\t/
 
 " set nowrap
 set whichwrap=b,s,<,>,[,],h,l
 
 " list setting
 " ##show invisible characters
-set list
+" set list
 " set listchars=tab:▸-,trail:⋅,extends:❯,precedes:❮
-set listchars=tab:⋅-,trail:⋅
+" set listchars=tab:⋅-,trail:⋅
 "
 " relative number
 "set relativenumber
