@@ -43,7 +43,8 @@ done
 # 1. Install Packages
 # ==============================================================================
 
-packages='zsh tmux vim ctags git g++ tree python tig curl rubygems'
+packagesApt='zsh tmux vim ctags git g++ tree python tig curl rubygems'
+packagesYum='xsel zsh tmux vim ctags git g++ tree python tig curl rubygems'
 
 which git &> /dev/null
 if [[ $? != 0 ]]; then
@@ -54,12 +55,12 @@ fi
 # detect environment and install packages
 cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
 if [[ $? == 0 ]]; then
-	sudo apt-get install ${packages}
+	sudo apt-get install ${packagesApt}
 fi
 
 cat /etc/issue | grep -E "Fedora|CentOS" &> /dev/null
 if [[ $? == 0 ]]; then
-	sudo yum install ${packages}
+	sudo yum install ${packagesYum}
 fi
 
 # ==============================================================================
