@@ -4,13 +4,13 @@
 
 ###############################################################################
 #                                                                             #
-#        myconfig 1.00 (c) by Fei Lunzhou 2013                                #
-#        https://github.com/Universefei/myconfig                              #
+#        confeverig 1.00 (c) by Fei Lunzhou 2013                                #
+#        https://github.com/Universefei/confeverig                              #
 #                                                                             #
 #        Created: 2013/09/21                                                  #
 #        Last Updated: 2013/10/23                                             #
 #                                                                             #
-#        myconfig is released under the GPL license.                          #
+#        confeverig is released under the GPL license.                          #
 #        See LICENSE file for details.                                        #
 #                                                                             #
 #        1. install packages                                                  #
@@ -27,7 +27,7 @@
 
 
 # set global variable
-MYCONF="$HOME/myconfig"
+MYCONF="$HOME/confeverig"
 LIB="${MYCONF}/lib"
 TEMPLATE="${MYCONF}/template"
 
@@ -127,7 +127,7 @@ if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
 fi
 
 cp $TEMPLATE/_zshrc ~/.zshrc &&
-	yellow ".zshrc was updated via /myconfig/template/zshrc!"
+	yellow ".zshrc was updated via /confeverig/template/zshrc!"
 
 # ==============================================================================
 # 6. Install oh-my-zsh
@@ -149,32 +149,32 @@ echo 'export PATH=$PATH:$PATH' >> ~/.zshrc
 # 7. User tailorded configuration
 # ==============================================================================
 
-[[ ! -d ~/.zsh_myconfig ]] && {
-	mkdir ~/.zsh_myconfig
-	echo "no .zsh_myconfig exist!have created one"
+[[ ! -d ~/.zsh_confeverig ]] && {
+	mkdir ~/.zsh_confeverig
+	echo "no .zsh_confeverig exist!have created one"
 	} ||
-	echo " .zsh_myconfig dir exist!"
+	echo " .zsh_confeverig dir exist!"
 
 for wtf in ${TEMPLATE}/*
 do
 	filename=$(basename ${wtf})
 	if [[ -d ${wtf} ]];then
-		[[ -d ~/.zsh_myconfig/${filename} ]] && {
-			mv  ~/.zsh_myconfig/${filename} ~/.zsh_myconfig/${filename}.orig &> /dev/null &&
+		[[ -d ~/.zsh_confeverig/${filename} ]] && {
+			mv  ~/.zsh_confeverig/${filename} ~/.zsh_confeverig/${filename}.orig &> /dev/null &&
 			echo "${filename} backup!" ||
 			echo "DO NOT BACKUP!"
 			}
-		cp -rf ${wtf} ~/.zsh_myconfig/ &&
+		cp -rf ${wtf} ~/.zsh_confeverig/ &&
 		echo "${wtf} moved!"
 	fi	
 done
 unset filename
 # prompt for tailored configuration
-echo "you can make symblic link from ~/.zsh_myconfig/*/available to enabled to
+echo "you can make symblic link from ~/.zsh_confeverig/*/available to enabled to
 customize your config!!"
 # TODO:need to implement interactive dialog to provide customization
-cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_myconfig/zshrc_option.bash 
-#echo 'source ~/.zsh_myconfig/zshrc_option.bash' >> ~/.zshrc
+cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_confeverig/zshrc_option.bash 
+#echo 'source ~/.zsh_confeverig/zshrc_option.bash' >> ~/.zshrc
 
 
 # ==============================================================================
