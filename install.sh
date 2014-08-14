@@ -43,8 +43,8 @@ done
 # 1. Install Packages
 # ==============================================================================
 
-packagesApt='zsh tmux vim ctags git g++ tree python tig curl rubygems'
-packagesYum='xsel zsh tmux vim ctags git g++ tree python tig curl rubygems'
+packagesApt='axel xsel zsh tmux vim ctags git g++ tree python tig curl rubygems'
+packagesYum='axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
 
 which git &> /dev/null
 if [[ $? != 0 ]]; then
