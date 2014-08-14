@@ -21,8 +21,8 @@ set nowritebackup
 set nobackup
 set directory=/tmp//    " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
 
-set undofile
-set undodir=~/.vim/undo
+"set undofile
+"set undodir=~/.vim/undo
 
 autocmd! bufwritepost .vimrc source %
 ""}}}
