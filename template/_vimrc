@@ -23,6 +23,9 @@ set directory=/tmp//    " prepend(^=) $HOME/.tmp/ to default path; use full path
 
 "set undofile
 "set undodir=~/.vim/undo
+"Ctags
+set tags=tags;
+set autochdir
 
 autocmd! bufwritepost .vimrc source %
 ""}}}
