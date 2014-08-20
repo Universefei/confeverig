@@ -2,7 +2,6 @@
 set nocompatible        " Disable vi compatibility
 set hidden              " Open a new file using :e,
                         " without being forced to write or undo your changes first
-set encoding=utf-8
 set history=1000         " Number of things to remember in history
 set timeoutlen=250      " Time to wait after ESC (default causes an annoying delay)
 set clipboard=unnamed   " Yanks go on clipboard instead
@@ -23,7 +22,12 @@ set directory=/tmp//    " prepend(^=) $HOME/.tmp/ to default path; use full path
 
 "set undofile
 "set undodir=~/.vim/undo
-"Ctags
+"----------Chinese chararcters messy code troubleshooting
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencoding=utf-8
+set encoding=utf-8
+
+"----------Ctags
 set tags=tags;
 set autochdir
 
