@@ -4,13 +4,13 @@
 
 ###############################################################################
 #                                                                             #
-#        confeverig 1.00 (c) by Fei Lunzhou 2013                                #
-#        https://github.com/Universefei/confeverig                              #
+#        confeverig 1.00 (c) by Fei Lunzhou 2013                              #
+#        https://github.com/Universefei/confeverig                            #
 #                                                                             #
 #        Created: 2013/09/21                                                  #
 #        Last Updated: 2013/10/23                                             #
 #                                                                             #
-#        confeverig is released under the GPL license.                          #
+#        confeverig is released under the GPL license.                        #
 #        See LICENSE file for details.                                        #
 #                                                                             #
 #        1. install packages                                                  #
@@ -31,7 +31,6 @@ MYCONF="$HOME/confeverig"
 LIB="${MYCONF}/lib"
 TEMPLATE="${MYCONF}/template"
 
-
 # load library
 for conf_file in ${LIB}/*
 do
@@ -40,27 +39,47 @@ do
 done
 
 # ==============================================================================
-# 1. Install Packages
+# 1. Install Packages via package management tools
 # ==============================================================================
 
-packagesApt='axel xsel zsh tmux vim ctags git g++ tree python tig curl rubygems'
-packagesYum='axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
+# 1> Set packages needed to be installed on each OS.
+homebrewPKGlist='subversion axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
+aptgetPKGlist='subversion axel xsel zsh tmux vim ctags git g++ tree python tig curl rubygems'
+yumPKGlist='subversion axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
 
+# 2> Detect environment. 
+OS='unkonwn'
+UNAMESTR=`uname`
+
+if [[ "$UNAMESTR" == 'Darwin' ]];then
+    OS='darwin'
+elif [[ "$UNAMESTR" == 'FreeBSD' ]];then
+    OS='freeBSD'
+fi
+cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
+if [[ $? == 0 ]]; then
+    OS='Linux-Debian'
+fi
+cat /etc/issue | grep -E "Fedora|CentOS" &> /dev/null
+if [[ $? == 0 ]]; then
+    OS='Linux-Redhat'
+fi
+
+# 3> Install packages.
+if [[ $OS == 'darwin' ]];then
+    brew install ${homebrewPKGlist}
+elif [[ $OS == 'Linux-Debian' ]];then
+	sudo apt-get install ${aptgetPKGlist}
+elif [[ $OS == 'Linux-Redhat' ]];then
+	sudo yum install ${yumPKGlist}
+fi
+
+# 4> Check if installed git.
 which git &> /dev/null
 if [[ $? != 0 ]]; then
 	yellow "you havn't install git
 	please install git before execute this script"
 	#exit #needn't exit 'cause will install later
-fi
-# detect environment and install packages
-cat /etc/issue | grep -E "Ubuntu|Debian" &> /dev/null
-if [[ $? == 0 ]]; then
-	sudo apt-get install ${packagesApt}
-fi
-
-cat /etc/issue | grep -E "Fedora|CentOS" &> /dev/null
-if [[ $? == 0 ]]; then
-	sudo yum install ${packagesYum}
 fi
 
 # ==============================================================================
@@ -107,9 +126,10 @@ if (cp $TEMPLATE/_vimrc ~/.vimrc); then
 fi
 
 # ==============================================================================
-# 4. Replace ~/.tmux.conf
+# 4.Tmux 
 # ==============================================================================
 
+# 1> Replace ~/.tmux.conf
 if [[ -f ~/.tmux.conf || -h ~/.tmux.conf ]]; then
 	mv ~/.tmux.conf ~/.tmux.conf.orig
 	red "original .tmux.conf backed up!"
@@ -117,33 +137,39 @@ fi
 
 cp $TEMPLATE/_tmux.conf ~/.tmux.conf &&
 	red "tmux updated to my customed config!"
-
+    
 # ==============================================================================
-# 5. Replace ~/.zshrc
+# 5.Zsh and oh-my-zsh 
 # ==============================================================================
 
-if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
-	yellow ".zshrc conf file exsit!  +++++  backing up it to ~/.zshrc.pre"
-	mv ~/.zshrc ~/.zshrc.pre
+# check if installed zsh using package management tools.
+which zsh &> /dev/null
+if [[ $? != 0 ]];then
+    red "YOU HAVEN'T INSTALL ZSH CORRECTLY"
+elif [[ $? == 0 ]];then
+
+    # 1> Replace ~/.zshrc
+    if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
+        yellow ".zshrc conf file exsit!  +++++  backing up it to ~/.zshrc.pre"
+        mv ~/.zshrc ~/.zshrc.pre
+    fi
+    cp $TEMPLATE/_zshrc ~/.zshrc &&
+        yellow ".zshrc was updated via /confeverig/template/zshrc!"
+
+    # 2> Install oh-my-zsh
+    ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
+            git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    }
+    yellow "Using the oh my zsh template file and adding it to ~/.zshrc"
+    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc.from.ohmyzsh
+    yellow "Copying your current PATH and adding it to the end of ~/.zshrc for you"
+    # why needed this sentence? DO NOT KNOW
+    echo 'export PATH=$PATH:$PATH' >> ~/.zshrc
+
+    # 3> Change default shell to zsh
+    red "changing your default shell to zsh!!!!!!!"
+    sudo chsh -s `which zsh` # chsh -s $(which zsh) #this line has the same impact
 fi
-
-cp $TEMPLATE/_zshrc ~/.zshrc &&
-	yellow ".zshrc was updated via /confeverig/template/zshrc!"
-
-# ==============================================================================
-# 6. Install oh-my-zsh
-# ==============================================================================
-
-ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
-		git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-}
-
-yellow "Using the oh my zsh template file and adding it to ~/.zshrc"
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc.from.ohmyzsh
-
-yellow "Copying your current PATH and adding it to the end of ~/.zshrc for you"
-# why needed this sentence? DO NOT KNOW
-echo 'export PATH=$PATH:$PATH' >> ~/.zshrc
 
 
 # ==============================================================================
@@ -187,7 +213,7 @@ cp ${TEMPLATE}/zshrc_option.bash  ~/.zsh_confeverig/zshrc_option.bash
 # 9. Draw Show
 # ==============================================================================
 
-green '   _____                _______                            ___        '
+green '   _____                _______                            ___         '
 green '  /     \               |      |                           |__\        '
 green '  |  ____| ____   _ ____|  ____| ____  __   __  ____ __ __ ___  ______ '
 green '  |  |    /    \ / "    |  |___./ __ \|  | /  ./ __ \| "  \|  |/      |'
@@ -201,7 +227,7 @@ green '  |___________________________________________________________________|'
                              
 
 # ==============================================================================
-# 10. Change shell to zsh
+# 10. Refresh configuration
 # ==============================================================================
 
 red "oh-my-zsh configuration completed!!!"
@@ -210,8 +236,4 @@ red "oh-my-zsh configuration completed!!!"
 # the errors occured before is rusult from that ~/.zshrc is zsh syntax but not bash syntax
 /usr/bin/env zsh
 source ~/.zshrc
-red "changing your default shell to zsh!!!!!!!"
-sudo chsh -s `which zsh`
-# chsh -s $(which zsh) #this line has the same impact
-
 
