@@ -113,16 +113,22 @@ done
 # 3. configuration of VIM editor
 # ==============================================================================
 
-# Install Vundle for VIM plugins management
+# 1> Install Vundle for VIM plugins management.
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+# 2> Handle .vimrc
 if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
 	mv ~/.vimrc ~/.vimrc.orig
 	red "original .vimrc backed up!"
 fi
-
 if (cp $TEMPLATE/_vimrc ~/.vimrc); then
 	red "vim updated to my customed config!"
+fi
+
+# Copy plugins snipmate.vim with personal configuration.
+# SEE:https://github.com/scrooloose/snipmate-snippets
+if (cp -rf $TEMPLATE/vim/bundle/snipmate.vim ~/.vim/bundle/); then
+	red "Copy snipmate-----------------------------------------------------done"
 fi
 
 # ==============================================================================

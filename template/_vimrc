@@ -1,4 +1,3 @@
-" General {{{
 set nocompatible        " Disable vi compatibility
 set hidden              " Open a new file using :e,
                         " without being forced to write or undo your changes first
@@ -32,16 +31,19 @@ set tags=tags;
 set autochdir
 
 autocmd! bufwritepost .vimrc source %
-""}}}
-
-" Vundle {{{ -----------------------------------------------------------------
 filetype off
 filetype plugin indent off
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Plugin 'gmarik/vundle'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   Plugins                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call vundle#begin()
+
+"""""""""""""""""""""""""""""vundle
+Plugin 'gmarik/vundle'
+
 """""""""""""""""""""""""""""easymotion
 Plugin 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = 'f'
@@ -71,8 +73,10 @@ Plugin 'altercation/vim-colors-solarized'
 """""""""""""""""""""""""""""neocomplete
 " Plugin 'Shougo/neocomplete.vim'
 
-"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""snippets
+Plugin 'msanders/snipmate.vim'
 Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets.vim'
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -150,9 +154,11 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/goyo.vim'
 
-" }}}
 
-" Formatting {{{ --------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   Formats                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set fo-=o         " Do not insert the current comment leader after hitting 'o' or 'O' in Normal mode.
 set fo-=r         " Do not automatically insert a comment leader after an enter
 set fo-=t         " Do not auto-wrap text using textwidth (does not apply to comments)
@@ -191,7 +197,9 @@ set foldlevelstart=20 " All folds open when opening a file
 filetype plugin indent on " Automatically detect file types
 " }}}
 
-" Visual {{{ -----------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   Visual                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set ruler         " Show the cursor position all the time
 set showcmd       " Display incomplete commands
 " set cursorcolumn  " Highlight the current column
@@ -228,7 +236,9 @@ set whichwrap=b,s,<,>,[,],h,l
 set nu
 " }}}
 
-" Key mappings {{{ -----------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Key mapping                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap H ^
 noremap L $
 nnoremap ; :
