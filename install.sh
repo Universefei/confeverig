@@ -114,7 +114,7 @@ done
 # ==============================================================================
 
 # 1> Install Vundle for VIM plugins management.
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
 
 # 2> Handle .vimrc
 if [[ -f ~/.vimrc || -h ~/.vimrc ]]; then
