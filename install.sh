@@ -81,6 +81,7 @@ if [[ $? != 0 ]]; then
 	please install git before execute this script"
 	#exit #needn't exit 'cause will install later
 fi
+red "package installations-------------------------------------------------done"
 
 # ==============================================================================
 # 2. Install Dropbox
@@ -131,6 +132,7 @@ if (cp -rf $TEMPLATE/vim/bundle/snipmate.vim ~/.vim/bundle/); then
 	red "Copy snipmate-----------------------------------------------------done"
 fi
 
+red "VIM configuration-----------------------------------------------------done"
 # ==============================================================================
 # 4.Tmux 
 # ==============================================================================
@@ -144,6 +146,7 @@ fi
 cp $TEMPLATE/_tmux.conf ~/.tmux.conf &&
 	red "tmux updated to my customed config!"
     
+red "Tmux configuration----------------------------------------------------done"
 # ==============================================================================
 # 5.Zsh and oh-my-zsh 
 # ==============================================================================
@@ -163,13 +166,14 @@ elif [[ $? == 0 ]];then
         yellow ".zshrc was updated via /confeverig/template/zshrc!"
 
     # 2> Install oh-my-zsh
+    # FIXME:not work on centOS 6.5 can not clone repo.
     ls -a ~ | grep ".oh-my-zsh" &> /dev/null || {
             git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
     }
-    yellow "Using the oh my zsh template file and adding it to ~/.zshrc"
+    # "Using the oh my zsh template file and adding it to ~/.zshrc"
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc.from.ohmyzsh
-    yellow "Copying your current PATH and adding it to the end of ~/.zshrc for you"
-    # why needed this sentence? DO NOT KNOW
+    # "Copying your current PATH and adding it to the end of ~/.zshrc for you"
+    # XXX:why needed this sentence? DO NOT KNOW
     echo 'export PATH=$PATH:$PATH' >> ~/.zshrc
 
     # 3> Change default shell to zsh
@@ -177,6 +181,7 @@ elif [[ $? == 0 ]];then
     sudo chsh -s `which zsh` # chsh -s $(which zsh) #this line has the same impact
 fi
 
+red "Zsh and oh-my-zsh configuration---------------------------------------done"
 
 # ==============================================================================
 # 7. User tailorded configuration
