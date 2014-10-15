@@ -44,7 +44,7 @@ done
 
 # 1> Set packages needed to be installed on each OS.
 homebrewPKGlist='subversion axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
-aptgetPKGlist='subversion axel xsel zsh tmux vim ctags git g++ tree python tig curl rubygems'
+aptgetPKGlist='subversion axel xsel zsh tmux vim ctags git g++ tree python tig curl gem'
 yumPKGlist='subversion axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
 
 # 2> Detect environment. 
@@ -149,10 +149,10 @@ cp $TEMPLATE/_tmux.conf ~/.tmux.conf &&
 # ==============================================================================
 
 # check if installed zsh using package management tools.
-which zsh &> /dev/null
-if [[ $? != 0 ]];then
-    red "YOU HAVEN'T INSTALL ZSH CORRECTLY"
-elif [[ $? == 0 ]];then
+#which zsh &> /dev/null
+#if [[ $? != 0 ]];then
+#    red "YOU HAVEN'T INSTALL ZSH CORRECTLY"
+#elif [[ $? == 0 ]];then
 
     # 1> Replace ~/.zshrc
     if [[ -f ~/.zshrc || -h ~/.zshrc ]]; then
@@ -175,7 +175,7 @@ elif [[ $? == 0 ]];then
     # 3> Change default shell to zsh
     red "changing your default shell to zsh!!!!!!!"
     sudo chsh -s `which zsh` # chsh -s $(which zsh) #this line has the same impact
-fi
+#fi
 
 
 # ==============================================================================
