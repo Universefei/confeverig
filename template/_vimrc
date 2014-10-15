@@ -86,6 +86,10 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 """""""""""""""""""""""""""""
 Plugin 'groenewege/vim-less'
@@ -190,7 +194,7 @@ set ttyfast " u got a fast terminal
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 
-" set foldmethod=indent
+"set foldmethod=indent
 set foldmethod=manual
 set foldlevel=2
 set foldlevelstart=20 " All folds open when opening a file
