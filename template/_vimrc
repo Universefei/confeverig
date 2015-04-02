@@ -33,7 +33,7 @@ set autochdir
 autocmd! bufwritepost .vimrc source %
 filetype off
 filetype plugin indent off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
