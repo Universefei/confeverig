@@ -248,3 +248,11 @@ red "oh-my-zsh configuration completed!!!"
 /usr/bin/env zsh
 source ~/.zshrc
 
+# ==============================================================================
+# 11. Install utilities
+# ==============================================================================
+
+sudo pip install docopt pygments
+git clone https://github.com/chrisallenlane/cheat.git ~/cheat
+cd ~/cheat && python setup.py install
+

@@ -1,17 +1,23 @@
+
+                      __                         _        
+                     / _|                       (_)       
+   ___  ___   _ __  | |_  ___ __   __ ___  _ __  _   __ _ 
+  / __|/ _ \ | '_ \ |  _|/ _ \\ \ / // _ \| '__|| | / _` |
+ | (__| (_) || | | || | |  __/ \ V /|  __/| |   | || (_| |
+  \___|\___/ |_| |_||_|  \___|  \_/  \___||_|   |_| \__, |
+                                                     __/ |
+                                                    |___/ 
+
 Install
 =======
 
-Method 1
---------
+###Method 1
 
-* `git clone git@github.com:Universefei/myconfig.git ~/myconfig` workable if useing SSH protocal
-	- `git clone https://github.com/Universefei/myconfig.git ~/myconfig` usable via https
-* `cd ~/myconfig`
-* `sudo install.sh`
+* `git clone https://github.com/universefei/confeverig`
+* `cd ~/conveverig && sudo ./install.sh`
 
-Method 2
---------
+###Method 2
 
-wget https://github.com/universefei/confeverig/curl_install.sh -O - | bash
+`wget https://github.com/universefei/confeverig/curl_install.sh -O - | bash`
 
 
