@@ -21,6 +21,10 @@ Confeverig is a customizable \*NIX comand line tool for storing and configing yo
 
 ###Installation
 
+`git clone https://github.com/universefei/confeverig ~/confeverig && cd ~/confeverig && ./install.sh`
+
+OR
+
 `wget https://raw.githubusercontent.com/Universefei/confeverig/master/curl_install.sh -O - | bash`
 
 ###Customization
