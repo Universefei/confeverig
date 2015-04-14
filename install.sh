@@ -72,6 +72,8 @@ elif [[ $OS == 'Linux-Debian' ]];then
 	sudo apt-get install ${aptgetPKGlist}
 elif [[ $OS == 'Linux-Redhat' ]];then
 	sudo yum install ${yumPKGlist}
+    # install tmux
+    wget http://downloads.sourceforge.net/tmux/tmux-1.9a.tar.gz -O tmux.tar.gz && tar -zxvf tmux.tar.gz   && cd tmux-1.9a && ./configure && make && sudo make install && rm ../tmux-1.9a.tar.gz .
 fi
 
 # 4> Check if installed git.
