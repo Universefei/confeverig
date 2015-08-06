@@ -43,9 +43,9 @@ done
 # ==============================================================================
 
 # 1> Set packages needed to be installed on each OS.
-homebrewPKGlist='subversion axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
-aptgetPKGlist='subversion axel xsel zsh tmux vim ctags git g++ tree python tig curl '
-yumPKGlist='subversion axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
+homebrewPKGlist='cloc nvm axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
+aptgetPKGlist='cloc subversion axel xsel zsh tmux vim ctags git g++ tree python tig curl '
+yumPKGlist='cloc subversion axel xsel zsh tmux vim ctags git gcc-c++ tree python tig curl rubygems'
 
 # 2> Detect environment. 
 OS='unkonwn'
