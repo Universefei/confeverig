@@ -14,7 +14,7 @@
 confeverig
 ==========
 
-Confeverig is a customizable \*NIX comand line tool for storing and configing your system environment with ease. Confeverig support the following operation system currently:
+Confeverig is my customizable \*NIX developping environment configuration tool for restoring and configing your system environment with ease. Confeverig support the following operation system currently:
 * OS X
 * CentOS
 * Ubuntu
@@ -23,11 +23,11 @@ Confeverig is a customizable \*NIX comand line tool for storing and configing yo
 
 `git clone https://github.com/universefei/confeverig ~/confeverig && cd ~/confeverig && ./install.sh`
 
-OR
-
-`wget https://raw.githubusercontent.com/Universefei/confeverig/master/curl_install.sh -O - | bash`
 
 ###Customization
 
  * Fork this Repository.
- * Place your vimrc, zshrc, bashrc etc. in lib folder.
+ * Place your vimrc, zshrc, tmuxrc, bashrc etc. in config folder.
+ * overwrite tasks variable in confeverig.cfg which specify what you want to install and configure.
+
+

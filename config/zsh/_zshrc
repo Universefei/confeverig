@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+# sourcing zshrc template from oh-my-zsh
+source ~/.zshrc.from.ohmyzsh
+
+# sourcing zshrc template from myconfig/template/${directory}
+for config in ~/.confeverig/*
+do
+    if [[ -f $config ]]; then
+        source $config
+    fi
+done
+
+export LC_ALL="en_US.UTF-8"

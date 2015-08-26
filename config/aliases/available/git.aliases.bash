@@ -1,8 +1,6 @@
 
-echo 'sourcing /template/enabled/git.aliases.sh'
-
-cite 'about-alias'
-about-alias 'common git abbreviations'
+# cite 'about-alias'
+# about-alias 'common git abbreviations'
 
 
 
