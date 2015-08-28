@@ -6,8 +6,8 @@ source $LIB/os.sh
 source $LIB/colorecho.sh
 green "Start handling pkgs"
 
-### Install packages.
 
+### Install packages.
 echo `pwd`
 if [[ $OS == 'darwin' ]];then
     bash homebrew.sh
