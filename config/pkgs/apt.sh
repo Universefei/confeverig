@@ -15,10 +15,6 @@ if [[ $? != 0 ]]; then
     apt-get install sudo
 fi
 
-### set Locale stuff
-sudo apt-get install locales
-cd /usr/share/locales && ./install-language-pack en_US.UTF-8
-
 
 sudo apt-get install $pkgs
 
