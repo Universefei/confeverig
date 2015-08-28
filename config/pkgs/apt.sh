@@ -12,10 +12,15 @@ valgrind cgdb python-setuptools
 which sudo &> /dev/null
 if [[ $? != 0 ]]; then
     apt-get update
-    apt-get install -yq --force-yes sudo
+    apt-get install sudo
 fi
 
-sudo apt-get -yqq --force-yes install $pkgs
+### set Locale stuff
+sudo apt-get install locales
+cd /usr/share/locales && ./install-language-pack en_US.UTF-8
+
+
+sudo apt-get install $pkgs
 
 
 ### Backup and replace sources.list with 163's mirror
