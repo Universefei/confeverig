@@ -15,4 +15,10 @@ do
 done
 unset filename
 
+if [[ $OS == 'darwin' ]];then
+    . osx.sh
+elif [[ $OS == 'Linux-Debian' ]];then
+    . ubuntu.sh
+fi
+
 red "Handling aliases finished!"
