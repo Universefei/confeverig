@@ -15,6 +15,8 @@ elif [[ $OS == 'Linux-Debian' ]];then
     bash apt.sh
 elif [[ $OS == 'Linux-Redhat' ]];then
     bash yum.sh
+elif [[ $OS == 'opensuse' ]];then
+    bash zypper.sh
 fi
 
 

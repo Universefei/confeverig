@@ -19,9 +19,19 @@ function detect_os() {
     if [[ $? == 0 ]]; then 
         RET='Linux-Redhat'
     fi
+    
+    LSB_F=`lsb_release -a `
+    echo $LSB_F | grep -i -E "opensuse" &> /dev/null
+    if [[ $? == 0 ]]; then 
+        RET='opensuse'
+    fi
+    unset UNAME
+    unset LSB_F
+        
 }
 
 detect_os
 OS=$RET
+unset RET
 
 # echo $OS
