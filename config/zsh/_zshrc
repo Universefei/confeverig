@@ -1,14 +1,31 @@
 #!/usr/bin/env bash
 
 
-# sourcing zshrc template from oh-my-zsh
+################## load oh-my-zsh tpl ####################
 source ~/.zshrc.from.ohmyzsh
 
-# sourcing zshrc template from myconfig/template/${directory}
+################## load confeverig cnf ###################
 for config in ~/.confeverig/*
 do
     if [[ -f $config ]]; then
         source $config
     fi
 done
+unset config
+
+################## export my env ########################
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/env/lib
+export LIBRARY_PATH=$LIBRARY_PATH:$HOME/env/lib
+export PATH=$PATH:~/env/bin
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$HOME/env/include
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/env/include
+
+
+################## load all alias ########################
+for script in `ls $HOME/.scripts`;do
+    if [[ -f $script ]];then
+        source $i
+    fi
+done
+unset script
 

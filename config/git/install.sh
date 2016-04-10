@@ -13,5 +13,4 @@ fi
 
 bash ./git.sh
 
-
 red "Handling git finished!"

@@ -27,6 +27,7 @@ do
 	echo "sourcing libs"
     source $conf_file
 done
+unset conf_file
 
 
 ### install prerequest packages
@@ -42,8 +43,12 @@ do
          cd $CONF/$task/ &&  $CONF/$task/install.sh
     fi
 done
+unset task
 cd $CONFEVERIG
 # wait # wait for all tasks completed
+
+### Load scripts
+cp -rf $CONFEVERIG/scripts $HOME/
 
 
 ### Icon
@@ -58,7 +63,7 @@ green "                                                    |___/        "
 
 
 ### Refresh configuration
-chsh -s `which zsh`
+sudo chsh -s `which zsh`
 /usr/bin/env zsh
 source ~/.zshrc
 
