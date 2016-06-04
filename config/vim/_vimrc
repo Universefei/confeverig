@@ -26,6 +26,9 @@ set directory=/tmp//    " prepend(^=) $HOME/.tmp/ to default path; use full path
 "set undofile
 "set undodir=~/.vim/undo
 
+set colorcolumn=80
+highlight colorcolumn ctermbg=8
+
 " ---------------------------------------------------------------------------- "
 "                                    Charset
 " ---------------------------------------------------------------------------- "
@@ -433,6 +436,7 @@ nnoremap <F2> :vs ~/.vimrc<CR>
 " nnoremap <C-k> <C-b>
 nnoremap <F5> gD
 nnoremap <F8> :vs ~/lunzhoufei/snippet/<CR>
+nnoremap <F9> :set cc=80<CR>
 nnoremap <S-f> <C-]>
 
 "自动保存代码折叠信息
