@@ -21,7 +21,7 @@ sudo apt-get install $pkgs
 
 ### Backup and replace sources.list with 163's mirror
 sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
-sudo cp sources.list /etc/apt/sources.list
+sudo cp sources.list.xenial /etc/apt/sources.list
 sudo apt-get update
 
 
