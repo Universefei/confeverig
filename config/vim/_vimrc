@@ -100,6 +100,7 @@ let g:airline_symbols.branch = '⎇'
 " ---------------------------------------------------------------------------- "
 "                                    Snippets
 " ---------------------------------------------------------------------------- "
+let g:go_version_warning = 0
 Plugin 'msanders/snipmate.vim'
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets.vim'
@@ -159,6 +160,18 @@ syntax enable
 " syntax on
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.golang set filetype=go
+au BufWritePre *.go :GoFmt
+let g:go_def_mapping_enabled = 1
+au filetype go nmap gd :GoDef<CR>
+au filetype go nmap <C-j> <Plug>(go-def)
+au filetype go nmap <C-k> <Plug>(go-def-split)
+au filetype go nmap <C-q> <Plug>(go-def-vertical)
+au filetype go nmap <C-s> <Plug>(go-def-stack)
+au filetype go nmap <C-u> <Plug>(go-def-pop)
+au filetype go nmap <C-i> <Plug>(go-implements)
+au filetype go nmap <C-.> <Plug>(go-callees)
+au filetype go nmap <C-,> <Plug>(go-callers)
+
 filetype plugin on
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -166,9 +179,12 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
-Plugin 'dgryski/vim-godef'
+" Plugin 'cespare/vim-golang'
+" Plugin 'dgryski/vim-godef'
+
+
 Plugin 'Blackrush/vim-gocode'
-Plugin 'jnwhiteh/vim-golang'
+" Plugin 'jnwhiteh/vim-golang'
 Plugin 'gkz/vim-ls'
 set runtimepath+=$GOROOT/misc/vim
 
@@ -431,11 +447,12 @@ nnoremap : #
 nnoremap " ma*
 nnoremap , zf%
 nnoremap t za
-nnoremap <F2> :vs ~/.vimrc<CR>
 " nnoremap <C-j> <C-f>
 " nnoremap <C-k> <C-b>
+nnoremap <F2> :vs ~/.vimrc<CR>
 nnoremap <F5> gD
-nnoremap <F8> :vs ~/lunzhoufei/snippet/<CR>
+nnoremap <F7> :vs $GOROOT/<CR>
+nnoremap <F8> :vs ~/f8snippet/<CR>
 nnoremap <F9> :set cc=80<CR>
 nnoremap <S-f> <C-]>
 
