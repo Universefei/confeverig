@@ -22,9 +22,10 @@ export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/env/include
 
 
 ################## load all alias ########################
-for script in `ls $HOME/.scripts`;do
+for script in $HOME/scripts/*;do
     if [[ -f $script ]];then
-        source $i
+        source $script
+        echo "source $HOME/scripts/$script"
     fi
 done
 unset script
